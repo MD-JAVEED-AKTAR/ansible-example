@@ -1,0 +1,19 @@
+---
+- name: Create directory and file on remote server
+  hosts: "{{ hosts }}"
+  remote_user: root
+  become: yes
+  vars_files:
+    - vault.yml  # Reference the vault file containing passwords
+  tasks:
+    - name: Create a new directory
+      file:
+        path: "/tmp/testdir"
+        state: directory
+        mode: '0755'
+
+    - name: Create a new file in the directory
+      copy:
+        content: "This is a new file created by Ansible."
+        dest: "/tmp/testdir/testfile.txt"
+        mode: '0644'
