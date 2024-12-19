@@ -1,6 +1,6 @@
 ---
 - name: Create directory and file on remote server
-  hosts: "{{ hosts }}"
+  hosts: 9.46.250.212
   remote_user: root
   become: yes
   vars_files:
